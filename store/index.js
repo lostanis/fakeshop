@@ -1,6 +1,8 @@
 // function for Mock API
 import mock from '../utils/mockServer'
-const sleep = m => new Promise(r => setTimeout(r, m))
+
+// const sleep = m => new Promise(r => setTimeout(r, m))
+
 export const state = () => ({
   categoriesList: [],
   currentCategory: {},
@@ -10,6 +12,7 @@ export const state = () => ({
   },
   bredcrumbs: []
 })
+
 export const mutations = {
   SET_CATEGORIES_LIST (state, categories) {
     state.categoriesList = categories
@@ -26,12 +29,10 @@ export const mutations = {
   RESET_BREADCRUMBS (state) {
     state.bredcrumbs = []
   }
-
 }
+
 export const actions = {
   async getProductsListRandom ({ commit }) {
-    // simulate api work
-    await sleep(50)
     const [products, productsImages] = await Promise.all(
       [
         this.$axios.$get('/mock/products.json'),
@@ -39,7 +40,7 @@ export const actions = {
       ]
 
     )
-    commit('GET_PRODUCTS_BY_IDS')
+    // commit('GET_PRODUCTS_BY_IDS')
     const idsArray = (mock.sampleSize(products, 5)).map(p => p.id)
     return mock.getProductsByIds(products, productsImages, idsArray)
   },
@@ -47,18 +48,17 @@ export const actions = {
   async setBreadcrumbs ({ commit }, data) {
     await commit('SET_BREADCRUMBS', data)
   },
+
   async getCategoriesList ({ commit }) {
     try {
-      await sleep(50)
       await commit('SET_CATEGORIES_LIST', mock.categories)
     } catch (err) {
       console.log(err)
       throw new Error('Внутреняя ошибка сервера, сообщите администратору')
     }
   },
+
   async getCurrentCategory ({ commit, dispatch }, { route }) {
-    // simulate api work
-    await sleep(50)
     const category = mock.categories.find((cat) => cat.cSlug === route.params.CategorySlug)
     const [products, productsImages] = await Promise.all(
       [
@@ -71,9 +71,8 @@ export const actions = {
 
     await commit('SET_CURRENT_CATEGORY', mock.addProductsToCategory(products, productsImages, category))
   },
+
   async getCurrentProduct ({ commit, dispatch }, { route }) {
-    // simulate api work
-    await sleep(50)
     const productSlug = route.params.ProductSlug
     const [products, productsImages, alsoBuyProducts, interestingProducts] = await Promise.all(
       [

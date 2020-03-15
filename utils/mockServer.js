@@ -1,46 +1,48 @@
 const sampleSize = require('lodash.samplesize')
+
 const categories = [
   {
-    id: 'cats',
-    cTitle: 'Cats',
-    cName: 'Cats',
-    cSlug: 'cats',
+    id: 'home',
+    cTitle: 'Home',
+    cName: 'Home',
+    cSlug: 'home',
     cMetaDescription: 'Мета описание',
     cDesc: 'Описание',
-    cImage: 'https://source.unsplash.com/300x300/?cat,cats',
+    cImage: 'https://source.unsplash.com/300x300/?home',
     products: []
   },
   {
-    id: 'dogs',
-    cTitle: 'Dogs',
-    cName: 'Dogs',
-    cSlug: 'dogs',
+    id: 'garden',
+    cTitle: 'Garden',
+    cName: 'Garden',
+    cSlug: 'garden',
     cMetaDescription: 'Мета описание',
     cDesc: 'Описание',
-    cImage: 'https://source.unsplash.com/300x300/?dog,dogs',
+    cImage: 'https://source.unsplash.com/300x300/?garden',
     products: []
   },
   {
-    id: 'wolfs',
-    cTitle: 'Wolfs',
-    cName: 'Wolfs',
-    cSlug: 'wolfs',
+    id: 'school',
+    cTitle: 'School',
+    cName: 'School',
+    cSlug: 'school',
     cMetaDescription: 'Мета описание',
     cDesc: 'Описание',
-    cImage: 'https://source.unsplash.com/300x300/?wolf',
+    cImage: 'https://source.unsplash.com/300x300/?school',
     products: []
   },
   {
-    id: 'bulls',
-    cTitle: 'Bulls',
-    cName: 'Bulls',
-    cSlug: 'bulls',
+    id: 'garage',
+    cTitle: 'BuGaragells',
+    cName: 'Garage',
+    cSlug: 'garage',
     cMetaDescription: 'Мета описание',
     cDesc: 'Описание',
-    cImage: 'https://source.unsplash.com/300x300/?bull',
+    cImage: 'https://source.unsplash.com/300x300/?garage',
     products: []
   }
 ]
+
 function getProductsByIds (products, productsImages, ids) {
   const innerProducts = products.filter(p => p.id === ids.find(id => p.id === id))
   if (!innerProducts) return null
@@ -52,6 +54,7 @@ function getProductsByIds (products, productsImages, ids) {
     }
   })
 }
+
 function getProduct (products, productsImages, productSlug) {
   const innerProduct = products.find(p => p.pSlug === productSlug)
   if (!innerProduct) return null
@@ -61,6 +64,7 @@ function getProduct (products, productsImages, productSlug) {
     category: categories.find(cat => cat.id === innerProduct.category_id)
   }
 }
+
 function addProductsToCategory (products, productsImages, category) {
   const categoryInner = { ...category, products: [] }
   products.map(p => {
@@ -76,6 +80,7 @@ function addProductsToCategory (products, productsImages, category) {
   })
   return categoryInner
 }
+
 function getBreadcrumbs (pageType, route, data) {
   const crumbs = []
   crumbs.push({
@@ -106,4 +111,5 @@ function getBreadcrumbs (pageType, route, data) {
   }
   return crumbs
 }
+
 export default { categories, sampleSize, getProductsByIds, getProduct, addProductsToCategory, getBreadcrumbs }

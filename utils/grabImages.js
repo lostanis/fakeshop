@@ -2,7 +2,7 @@ const products = require('../static/mock/products.json')
 
 const got = require('got')
 const QS = require('querystring')
-const API_KEY = '15479263-4ccd4e4421b71313e34934a50'
+const API_KEY = '15607604-4b7b34da67ad86c8b6107e674'
 
 const fs = require('fs')
 const { promisify } = require('util')
@@ -29,10 +29,11 @@ async function fetchApiImg (searchQuery) {
     }
   }
 }
+
 async function getImagesUrls () {
   let imagesUrlWithId =
     products.map(product => {
-      const productName = product.pName.split(' ')[0]
+      const productName = product.pName.split(' ').join('+') // product.pName.split(' ')[0]
       const urls = fetchApiImg(productName)
       return { id: product.id, urls }
     })
@@ -46,6 +47,7 @@ async function getImagesUrls () {
   )
   return imagesUrlWithId
 }
+
 async function main () {
   try {
     const imagesUrls = await getImagesUrls()
