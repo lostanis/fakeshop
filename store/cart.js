@@ -54,8 +54,8 @@ export const actions = {
   async setProductsListByIds ({ commit, state }) {
     const [products, productsImages] = await Promise.all(
       [
-        fetch('/mock/products.json'),
-        fetch('/mock/products-images.json')
+        fetch('/mock/products.json').json(),
+        fetch('/mock/products-images.json').json()
         // this.$axios.$get('/mock/products.json'),
         // this.$axios.$get('/mock/products-images.json')
       ]
