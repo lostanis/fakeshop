@@ -10,6 +10,10 @@ module.exports = {
     modern: 'client'
   }),
 
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+  },
+
   head: {
     htmlAttrs: {
       lang: 'en'
