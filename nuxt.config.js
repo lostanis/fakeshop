@@ -12,11 +12,11 @@ module.exports = {
 
   head: {
     htmlAttrs: {
-      lang: 'ru'
+      lang: 'en'
     },
-    title: 'Nuxt APP',
+    title: 'AG Shop',
     meta: [
-      { hid: 'description', name: 'description', content: 'Интернет-магазин' }
+      { hid: 'description', name: 'description', content: 'Online store with some stuff...' }
     ],
     link: [
       { rel: 'shortcut icon', href: 'favicon.ico' }

@@ -1,6 +1,6 @@
 <template>
   <div :class="$style.page">
-    <h1>Интернет-магазин "Хвостики"</h1>
+    <!-- <h1>AG Store</h1> -->
     <CategoriesList :categories="categories" />
   </div>
 </template>
@@ -19,7 +19,7 @@ export default {
       console.log(err)
       return error({
         statusCode: 404,
-        message: 'Категории не найдены или сервер не доступен'
+        message: 'Categories not found... :('
       })
     }
   },
