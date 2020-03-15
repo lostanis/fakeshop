@@ -35,10 +35,8 @@ export const actions = {
   async getProductsListRandom ({ commit }) {
     const [products, productsImages] = await Promise.all(
       [
-        fetch('/mock/products.json').json(),
-        fetch('/mock/products-images.json').json()
-        // this.$axios.$get('/mock/products.json'),
-        // this.$axios.$get('/mock/products-images.json')
+        this.$axios.$get('/mock/products.json'),
+        this.$axios.$get('/mock/products-images.json')
       ]
 
     )
@@ -64,10 +62,8 @@ export const actions = {
     const category = mock.categories.find((cat) => cat.cSlug === route.params.CategorySlug)
     const [products, productsImages] = await Promise.all(
       [
-        fetch('/mock/products.json').json(),
-        fetch('/mock/products-images.json').json()
-        // this.$axios.$get('/mock/products.json'),
-        // this.$axios.$get('/mock/products-images.json')
+        this.$axios.$get('/mock/products.json'),
+        this.$axios.$get('/mock/products-images.json')
       ]
     )
 
@@ -81,10 +77,8 @@ export const actions = {
     const productSlug = route.params.ProductSlug
     const [products, productsImages, alsoBuyProducts, interestingProducts] = await Promise.all(
       [
-        fetch('/mock/products.json').json(),
-        fetch('/mock/products-images.json').json(),
-        // this.$axios.$get('/mock/products.json'),
-        // this.$axios.$get('/mock/products-images.json'),
+        this.$axios.$get('/mock/products.json'),
+        this.$axios.$get('/mock/products-images.json'),
         dispatch('getProductsListRandom'),
         dispatch('getProductsListRandom')
       ]

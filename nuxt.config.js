@@ -3,6 +3,7 @@ const imageminMozjpeg = require('imagemin-mozjpeg')
 // const JavaScriptObfuscator = require('webpack-obfuscator')
 const ImageminPlugin = require('imagemin-webpack-plugin').default
 const isDev = process.env.NODE_ENV !== 'production'
+const baseUrl = isDev ? 'http://localhost:3000' : process.env.BASE_URL
 
 module.exports = {
   mode: 'universal',
@@ -11,7 +12,7 @@ module.exports = {
   }),
 
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+    baseUrl
   },
 
   head: {
@@ -77,6 +78,7 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    baseURL: baseUrl
   },
   render: {
     // http2: {
